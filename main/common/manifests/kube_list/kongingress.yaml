@@ -1,0 +1,43 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kong-admin
+  namespace: kong
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: "kongadm.4.230.147.218.nip.io"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: kong-kong-admin
+                port:
+                  number: 8001
+    - host: "kongmgr.4.230.147.218.nip.io"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: kong-kong-manager
+                port:
+                  number: 8002
+    - host: "kongproxy.4.230.147.218.nip.io"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: kong-kong-proxy
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - kongproxy.4.230.147.218.nip.io
+        - kongadm.4.230.147.218.nip.io
+        - kongmgr.4.230.147.218.nip.io

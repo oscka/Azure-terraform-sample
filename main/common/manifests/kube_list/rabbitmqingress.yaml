@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rabbitmq-admin
+  namespace: rabbitmq-system
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: "rabbitmq.4.230.147.218.nip.io"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: rabbitmqcluster-prod
+                port:
+                  number: 15672
+  tls:
+  - hosts:
+    - rabbitmq.4.230.147.218.nip.io
