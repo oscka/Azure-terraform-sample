@@ -3,5 +3,5 @@
 
 location = "koreacentral"
 # 키설정필요
-#helm_repository_username = ""
-#helm_repository_password = ""
+helm_repository_username = ""
+helm_repository_password = ""
