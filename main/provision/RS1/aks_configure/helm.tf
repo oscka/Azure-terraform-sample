@@ -1,137 +1,137 @@
 locals {
   ingress_nginx = {
-    name       = "ingress-nginx"
-    repository = "https://kubernetes.github.io/ingress-nginx"
-    chart      = "ingress-nginx"
-    namespace = "ingress-nginx"
+    name          = "ingress-nginx"
+    repository    = "https://kubernetes.github.io/ingress-nginx"
+    chart         = "ingress-nginx"
+    namespace     = "ingress-nginx"
     chart_version = "4.10.1"
     values_set = [
-      { 
-        name = "controller.replicaCount",
+      {
+        name  = "controller.replicaCount",
         value = 2,
         type  = "auto"
       },
-      { 
-        name = "controller.service.externalTrafficPolicy",
+      {
+        name  = "controller.service.externalTrafficPolicy",
         value = "Local",
         type  = "string"
       }
     ]
-  }   
+  }
   cert_manager = {
-    name       = "cert-manager"
-    repository = "https://charts.jetstack.io"
-    chart      = "cert-manager"
-    namespace = "cert-manager"
+    name          = "cert-manager"
+    repository    = "https://charts.jetstack.io"
+    chart         = "cert-manager"
+    namespace     = "cert-manager"
     chart_version = "1.15.0"
     values_set = [
-      { 
-        name = "replicaCount",
+      {
+        name  = "replicaCount",
         value = 2,
         type  = "auto"
       },
-      { 
-        name = "controller.service.externalTrafficPolicy",
+      {
+        name  = "controller.service.externalTrafficPolicy",
         value = "Local",
         type  = "string"
       }
     ]
-  } 
+  }
   rancher = {
-    name       = "rancher"
-    repository = "https://releases.rancher.com/server-charts/stable"
-    chart      = "rancher"
-    namespace = "cattle-system"
+    name          = "rancher"
+    repository    = "https://releases.rancher.com/server-charts/stable"
+    chart         = "rancher"
+    namespace     = "cattle-system"
     chart_version = "2.8.4"
     values_set = [
-      { 
-        name = "hostname",
+      {
+        name  = "hostname",
         value = "rancher.4.230.147.218.nip.io",
         type  = "string"
       },
-      { 
-        name = "replicas",
+      {
+        name  = "replicas",
         value = 1,
         type  = "auto"
       },
-      { 
-        name = "ingress.ingressClassName",
+      {
+        name  = "ingress.ingressClassName",
         value = "nginx",
         type  = "string"
       }
     ]
   }
   rabbitmq_cluster_operator = {
-    name       = "rabbitmq-cluster-operator"
-    repository = "https://charts.bitnami.com/bitnami"
-    chart      = "rabbitmq-cluster-operator"
-    namespace = "rabbitmq-system"
+    name          = "rabbitmq-cluster-operator"
+    repository    = "https://charts.bitnami.com/bitnami"
+    chart         = "rabbitmq-cluster-operator"
+    namespace     = "rabbitmq-system"
     chart_version = "4.3.6"
   }
 
   // yaml chart 수정해야 함 
   postgrespl = {
-    name       = "postgresql-ha"
-    repository = "https://charts.bitnami.com/bitnami"
-    chart      = "postgresql-ha"
-    namespace = "postgresql"
+    name          = "postgresql-ha"
+    repository    = "https://charts.bitnami.com/bitnami"
+    chart         = "postgresql-ha"
+    namespace     = "postgresql"
     chart_version = "14.2.5"
-    chart_Path = "../../../common/manifests/helm/postgresql.yaml"    
+    chart_Path    = "../../../common/manifests/helm/postgresql.yaml"
   }
 
   aims_lbs_manager = {
-    name       = "aims-lbs-manager"
-    repository = "https://raw.githubusercontent.com/rkkim04/aims-k8s-helm/main/"
+    name                = "aims-lbs-manager"
+    repository          = "https://raw.githubusercontent.com/rkkim04/aims-k8s-helm/main/"
     repository_username = var.helm_repository_username
     repository_password = var.helm_repository_password
-    chart      = "aims-lbs-manager"
-    namespace = "aims-lbs-manager"
-    chart_version = "1.2.3"
+    chart               = "aims-lbs-manager"
+    namespace           = "aims-lbs-manager"
+    chart_version       = "1.2.3"
   }
   aims_ota_manager = {
-    name       = "aims-ota-manager"
-    repository = "https://raw.githubusercontent.com/rkkim04/aims-k8s-helm/main/"
+    name                = "aims-ota-manager"
+    repository          = "https://raw.githubusercontent.com/rkkim04/aims-k8s-helm/main/"
     repository_username = var.helm_repository_username
     repository_password = var.helm_repository_password
-    chart      = "aims-ota-manager"
-    namespace = "aims-ota-manager"
-    chart_version = "1.2.3"
+    chart               = "aims-ota-manager"
+    namespace           = "aims-ota-manager"
+    chart_version       = "1.2.3"
   }
   core = {
-    name       = "core"
-    repository = "https://raw.githubusercontent.com/rkkim04/aims-k8s-helm/main/"
+    name                = "core"
+    repository          = "https://raw.githubusercontent.com/rkkim04/aims-k8s-helm/main/"
     repository_username = var.helm_repository_username
     repository_password = var.helm_repository_password
-    chart      = "core"
-    namespace = "core"
-    chart_version = "1.2.3"
+    chart               = "core"
+    namespace           = "core"
+    chart_version       = "1.2.3"
   }
   dashboard = {
-    name       = "dashboard"
-    repository = "https://raw.githubusercontent.com/rkkim04/aims-k8s-helm/main/"
+    name                = "dashboard"
+    repository          = "https://raw.githubusercontent.com/rkkim04/aims-k8s-helm/main/"
     repository_username = var.helm_repository_username
     repository_password = var.helm_repository_password
-    chart      = "dashboard"
-    namespace = "dashboard"
-    chart_version = "1.2.3"
+    chart               = "dashboard"
+    namespace           = "dashboard"
+    chart_version       = "1.2.3"
   }
   dashboard_service = {
-    name       = "dashboard-service"
-    repository = "https://raw.githubusercontent.com/rkkim04/aims-k8s-helm/main/"
+    name                = "dashboard-service"
+    repository          = "https://raw.githubusercontent.com/rkkim04/aims-k8s-helm/main/"
     repository_username = var.helm_repository_username
     repository_password = var.helm_repository_password
-    chart      = "dashboard-service"
-    namespace = "dashboard-service"
-    chart_version = "1.2.3"
+    chart               = "dashboard-service"
+    namespace           = "dashboard-service"
+    chart_version       = "1.2.3"
   }
   portal = {
-    name       = "portal"
-    repository = "https://raw.githubusercontent.com/rkkim04/aims-k8s-helm/main/"
+    name                = "portal"
+    repository          = "https://raw.githubusercontent.com/rkkim04/aims-k8s-helm/main/"
     repository_username = var.helm_repository_username
     repository_password = var.helm_repository_password
-    chart      = "portal"
-    namespace = "portal"
-    chart_version = "1.2.3"
+    chart               = "portal"
+    namespace           = "portal"
+    chart_version       = "1.2.3"
   }
 
 }
@@ -162,14 +162,14 @@ locals {
 #     ]
 #   }
 module "ingress_nginx" {
-  source = "../../../../modules/ETC/helm"
-  name = local.ingress_nginx.name
-  repository = local.ingress_nginx.repository
-  chart = local.ingress_nginx.chart
-  namespace = local.ingress_nginx.namespace
+  source        = "../../../../modules/ETC/helm"
+  name          = local.ingress_nginx.name
+  repository    = local.ingress_nginx.repository
+  chart         = local.ingress_nginx.chart
+  namespace     = local.ingress_nginx.namespace
   chart_version = local.ingress_nginx.chart_version
-  values_set = local.ingress_nginx.values_set
-  depends_on = [ module.namespace ]
+  values_set    = local.ingress_nginx.values_set
+  depends_on    = [module.namespace]
 }
 
 
@@ -188,14 +188,14 @@ module "ingress_nginx" {
 #     chart_Path = "../../../common/manifests/helm/postgresql.yaml"    
 #   }
 module "postgrespl" {
-  source = "../../../../modules/ETC/helm"
-  name = local.postgrespl.name
-  repository = local.postgrespl.repository
-  chart = local.postgrespl.chart
-  namespace = local.postgrespl.namespace
+  source        = "../../../../modules/ETC/helm"
+  name          = local.postgrespl.name
+  repository    = local.postgrespl.repository
+  chart         = local.postgrespl.chart
+  namespace     = local.postgrespl.namespace
   chart_version = local.postgrespl.chart_version
-  chart_Path = local.postgrespl.chart_Path
-  depends_on = [ module.namespace ]
+  chart_Path    = local.postgrespl.chart_Path
+  depends_on    = [module.namespace]
 }
 
 
@@ -241,13 +241,13 @@ module "postgrespl" {
 #     chart_version = "4.3.6"
 #   }
 module "rabbitmq_cluster_operator" {
-  source = "../../../../modules/ETC/helm"
-  name = local.rabbitmq_cluster_operator.name
-  repository = local.rabbitmq_cluster_operator.repository
-  chart = local.rabbitmq_cluster_operator.chart
-  namespace = local.rabbitmq_cluster_operator.namespace
+  source        = "../../../../modules/ETC/helm"
+  name          = local.rabbitmq_cluster_operator.name
+  repository    = local.rabbitmq_cluster_operator.repository
+  chart         = local.rabbitmq_cluster_operator.chart
+  namespace     = local.rabbitmq_cluster_operator.namespace
   chart_version = local.rabbitmq_cluster_operator.chart_version
-  depends_on = [ module.namespace ]
+  depends_on    = [module.namespace]
 }
 
 

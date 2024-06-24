@@ -26,16 +26,16 @@ variable "min_count" {
 }
 
 variable "os_disk_type" {
-  type = string     
+  type    = string
   default = "Managed"
 }
 
 variable "vm_size" {
-  type = string
+  type    = string
   default = "Standard_D16as_v4"
 }
 
 variable "upgrade_max_surge" {
-  type = string
+  type    = string
   default = "10%"
 }

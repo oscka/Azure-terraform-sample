@@ -1,11 +1,11 @@
 # isntall name 
 variable "name" {
-  type = string
+  type    = string
   default = "unknown"
 }
 
 variable "prefix_name" {
-  type = string
+  type    = string
   default = "unknown"
 }
 
@@ -21,7 +21,7 @@ variable "chart" {
 
 # 네임스페이스 이름 
 variable "namespace" {
-  type = string
+  type    = string
   default = "kube-system"
 }
 
@@ -32,13 +32,13 @@ variable "chart_version" {
 
 # values.yaml을 사용하여 설치시
 variable "values_file" {
-  type = map(any)
+  type    = map(any)
   default = {}
 }
 
 # values 차트 경로
 variable "chart_Path" {
-  type = string
+  type    = string
   default = ""
 }
 
@@ -53,15 +53,15 @@ variable "values_set" {
 }
 
 variable "repository_username" {
-  type = string
+  type    = string
   default = ""
 }
 variable "repository_password" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "create_namespace" {
-  type = bool
+  type    = bool
   default = false
 }

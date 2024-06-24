@@ -14,24 +14,24 @@ variable "min_count" {
 }
 variable "name" {
   type = string
-}   
+}
 
 variable "mode" {
-  type = string
+  type    = string
   default = "System"
 }
 
 variable "os_disk_type" {
-  type = string     
+  type    = string
   default = "Ephemeral"
 }
 
 variable "vm_size" {
-  type = string
+  type    = string
   default = "Standard_D16as_v4"
 }
 
 variable "upgrade_max_surge" {
-  type = string
+  type    = string
   default = "10%"
 }

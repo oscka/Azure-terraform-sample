@@ -13,10 +13,10 @@ terraform {
       version = "3.99.0"
     }
     kubernetes = {
-       source  = "hashicorp/kubernetes"
+      source = "hashicorp/kubernetes"
     }
     kubectl = {
-      source = "gavinbunney/kubectl"
+      source  = "gavinbunney/kubectl"
       version = ">= 1.7.0"
     }
   }
@@ -26,16 +26,16 @@ terraform {
 data "azurerm_kubernetes_cluster" "aks" {
   name                = module.aks_kubernetes_cluster.name
   resource_group_name = module.resource_group.resource_group_name
-  depends_on = [ 
+  depends_on = [
     module.resource_group,
     module.aks_kubernetes_cluster
-    ]
+  ]
 }
 
 # kubeernetes 용 프로바이더 입니다 
 # namespace 와 helm 에서 사용합니다 
 provider "kubernetes" {
-  config_path = "~/.kube/config"
+  config_path            = "~/.kube/config"
   host                   = data.azurerm_kubernetes_cluster.aks.kube_config[0].host
   client_certificate     = base64decode(data.azurerm_kubernetes_cluster.aks.kube_config[0].client_certificate)
   client_key             = base64decode(data.azurerm_kubernetes_cluster.aks.kube_config[0].client_key)
@@ -45,8 +45,8 @@ provider "kubernetes" {
 # helm 용 프로바이더 입니다 
 # helm 에서 사용합니다 
 provider "helm" {
-  repository_config_path   = "${path.module}/.helm/repositories.yaml"
-  repository_cache         = "${path.module}/.helm"
+  repository_config_path = "${path.module}/.helm/repositories.yaml"
+  repository_cache       = "${path.module}/.helm"
   kubernetes {
     config_path            = "~/.kube/config"
     host                   = data.azurerm_kubernetes_cluster.aks.kube_config[0].host
@@ -63,9 +63,9 @@ provider "helm" {
 # 관련 이슈 링크 https://github.com/hashicorp/terraform-provider-kubernetes-alpha/issues/199#issuecomment-832614387
 # 클러스터 생성과 동시에 yaml 배포를 위한 프로바이더 입니다
 provider "kubectl" {
-    host                   = data.azurerm_kubernetes_cluster.aks.kube_config[0].host
-    cluster_ca_certificate = base64decode(data.azurerm_kubernetes_cluster.aks.kube_config[0].cluster_ca_certificate)
-    client_certificate     = base64decode(data.azurerm_kubernetes_cluster.aks.kube_config[0].client_certificate)
-    client_key             = base64decode(data.azurerm_kubernetes_cluster.aks.kube_config[0].client_key)
-    load_config_file       = false
+  host                   = data.azurerm_kubernetes_cluster.aks.kube_config[0].host
+  cluster_ca_certificate = base64decode(data.azurerm_kubernetes_cluster.aks.kube_config[0].cluster_ca_certificate)
+  client_certificate     = base64decode(data.azurerm_kubernetes_cluster.aks.kube_config[0].client_certificate)
+  client_key             = base64decode(data.azurerm_kubernetes_cluster.aks.kube_config[0].client_key)
+  load_config_file       = false
 }

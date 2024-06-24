@@ -1,12 +1,12 @@
 variable "name" {
-  type = string
+  type    = string
   default = "unknown"
 }
 variable "location" {
-  type = string
+  type    = string
   default = "unknown"
 }
 
-variable "tags" { 
+variable "tags" {
   type = map(string)
 }

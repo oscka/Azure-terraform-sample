@@ -5,6 +5,6 @@ variable "manifests_Path" {
 
 # 템플릿 yaml 파일의 map 타입 변수( key = value )
 variable "yaml_var" {
-  type = map(any)
+  type    = map(any)
   default = {}
 }

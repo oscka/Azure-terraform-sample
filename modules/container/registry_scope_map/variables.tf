@@ -1,20 +1,20 @@
 variable "location" {
-  type = string
+  type    = string
   default = "unknown"
 }
 variable "resource_group_name" {
   type = string
 }
 
-variable "tags" { 
+variable "tags" {
   type = map(string)
 }
 variable "name" {
-  type = string
+  type    = string
   default = "unknown"
 }
 variable "container_registry_name" {
-  type = string  
+  type = string
 }
 variable "actions" {
   description = "The list of actions for the scope map."

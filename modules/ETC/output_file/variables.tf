@@ -1,9 +1,9 @@
 variable "values" {
-  type = map(any)
+  type    = map(any)
   default = {}
 }
 variable "value" {
-  type = string
+  type    = string
   default = ""
 }
 
@@ -12,7 +12,7 @@ variable "out_path" {
 }
 
 variable "tpl_path" {
-  type = string  
+  type    = string
   default = ""
 }
 

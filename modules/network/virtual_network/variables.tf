@@ -1,5 +1,5 @@
 variable "location" {
-  type = string
+  type    = string
   default = "unknown"
 }
 variable "resource_group_name" {
@@ -10,7 +10,7 @@ variable "resource_group_name" {
 #   type = map(string)
 # }
 variable "name" {
-  type = string
+  type    = string
   default = "unknown"
 }
 variable "address_space" {

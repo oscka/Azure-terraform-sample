@@ -3,19 +3,19 @@
 locals {
   namespaces = [
     {
-      name                           = "kong"
+      name                             = "kong"
       wait_for_default_service_account = false
     },
     {
-      name                           = "rabbitmq-system"
+      name                             = "rabbitmq-system"
       wait_for_default_service_account = false
     },
     {
-      name                           = "postgresql"
+      name                             = "postgresql"
       wait_for_default_service_account = false
     },
     {
-      name                           = "ingress-nginx"
+      name                             = "ingress-nginx"
       wait_for_default_service_account = false
     },
   ]
@@ -25,7 +25,7 @@ locals {
 // locals에 네임스페이스 목록을 만들어 한번에 생성 
 // 클러스터 생성시 미리 생성 해야 할 네임스페이스를 모아 두는곳 
 module "namespace" {
-  source = "../../../../modules/kubernetes/core/namespace"
+  source     = "../../../../modules/kubernetes/core/namespace"
   namespaces = local.namespaces
 }
 
@@ -33,7 +33,7 @@ module "namespace" {
 // 만약 쿠버네티스 자체를 terraform 으로 관리할 때 사용 
 module "namespace_core" {
   source = "../../../../modules/kubernetes/core/namespace"
-  name = "core"
+  name   = "core"
 }
 
 

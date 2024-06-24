@@ -3,23 +3,23 @@ variable "url" {
 }
 
 variable "content_type" {
-  type = string
+  type    = string
   default = "application/json"
 }
 
 variable "authorization" {
-  type = string
+  type    = string
   default = ""
 }
 variable "values" {
-  type = map(any)
+  type    = map(any)
   default = {}
 }
 variable "header" {
-  type = string
+  type    = string
   default = ""
 }
 variable "check_url" {
-  type = string
+  type    = string
   default = ""
 }

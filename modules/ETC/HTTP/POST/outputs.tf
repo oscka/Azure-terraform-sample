@@ -6,5 +6,5 @@ output "data_exists" {
 
 ### status_code 출력을 위해 작성 
 output "status_code" {
-    value = module.check_data.status_code
+  value = module.check_data.status_code
 }

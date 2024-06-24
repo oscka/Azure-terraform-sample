@@ -1,34 +1,34 @@
 locals {
-    aims_core_properties = {
-        properties_name = "aims-core-properties"
-        config_map_ns = "core"
-        filepath = "../../common/manifests/config_map/aims.properties"
-    }
-    aims_lbs_properties = {
-        properties_name = "aims-lbs-properties"
-        config_map_ns = "aims-lbs-manager"
-        filepath = "../../common/manifests/config_map/aims.properties"
-    }
-    aims_ota_properties = {
-        properties_name = "aims-ota-properties"
-        config_map_ns = "aims-ota-manager"
-        filepath = "../../common/manifests/config_map/aims.properties"
-    }
-    dashboard_properties = {
-        properties_name = "dashboard-properties"
-        config_map_ns = "dashboard"
-        filepath = "../../common/manifests/config_map/aims.properties"
-    }
-    dashboard_service_properties = {
-        properties_name = "dashboard-service-properties"
-        config_map_ns = "dashboard-service"
-        filepath = "../../common/manifests/config_map/aims.properties"
-    }
-    portal_properties = {
-        properties_name = "portal-properties"
-        config_map_ns = "portal"
-        filepath = "../../common/manifests/config_map/aims.properties"
-    }
+  aims_core_properties = {
+    properties_name = "aims-core-properties"
+    config_map_ns   = "core"
+    filepath        = "../../common/manifests/config_map/aims.properties"
+  }
+  aims_lbs_properties = {
+    properties_name = "aims-lbs-properties"
+    config_map_ns   = "aims-lbs-manager"
+    filepath        = "../../common/manifests/config_map/aims.properties"
+  }
+  aims_ota_properties = {
+    properties_name = "aims-ota-properties"
+    config_map_ns   = "aims-ota-manager"
+    filepath        = "../../common/manifests/config_map/aims.properties"
+  }
+  dashboard_properties = {
+    properties_name = "dashboard-properties"
+    config_map_ns   = "dashboard"
+    filepath        = "../../common/manifests/config_map/aims.properties"
+  }
+  dashboard_service_properties = {
+    properties_name = "dashboard-service-properties"
+    config_map_ns   = "dashboard-service"
+    filepath        = "../../common/manifests/config_map/aims.properties"
+  }
+  portal_properties = {
+    properties_name = "portal-properties"
+    config_map_ns   = "portal"
+    filepath        = "../../common/manifests/config_map/aims.properties"
+  }
 
 }
 

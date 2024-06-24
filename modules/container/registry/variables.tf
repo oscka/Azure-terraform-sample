@@ -1,20 +1,20 @@
 variable "name" {
-  type = string
+  type    = string
   default = "unknown"
 }
 variable "location" {
-  type = string
+  type    = string
   default = "unknown"
 }
 variable "resource_group_name" {
   type = string
 }
 
-variable "tags" { 
+variable "tags" {
   type = map(string)
 }
 
 variable "admin_enabled" {
-  type = bool
+  type    = bool
   default = false
 }

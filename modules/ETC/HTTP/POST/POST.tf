@@ -2,11 +2,11 @@
 ### http 모듈은 state 파일에 작성되는것이 아니기 때문에 apply 할 때마다 post가 실행 됨 
 ### 생성 전 해당 url에 이미 생성 된 data가 있는지 확인 후 없다면 생성 하도록 작성됨 
 module "check_data" {
-  source = "../GET"
-  url = var.url
-  content_type = var.content_type
+  source        = "../GET"
+  url           = var.url
+  content_type  = var.content_type
   authorization = var.authorization
-  header = var.header  
+  header        = var.header
   ### 정규 표현식을 사용한다면 url 뒤에 입력될 check용 url을 추가로 넣어야 한다 
   # check_url = var.check_url
 }
@@ -28,15 +28,15 @@ locals {
 ### 정규화된 json 파일을 사용하여 post로 생성 
 ### 위의 locals 에서 data_exists 의 값이 Not found 이면 data 를 생성하고 found 이면 생성하지 않는다 
 data "http" "post" {
-  count = local.data_exists == "Not found" ? 1 : 0
-  url = var.url
+  count  = local.data_exists == "Not found" ? 1 : 0
+  url    = var.url
   method = "POST"
   request_headers = {
-    "Content-Type" = var.content_type
+    "Content-Type"  = var.content_type
     "Authorization" = var.authorization
   }
   request_body = file(var.jsonPath)
-  depends_on = [ module.check_data]  
+  depends_on   = [module.check_data]
 }
 
 ### 정규화된 json 파일을 사용하여 post로 생성 

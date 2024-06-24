@@ -2,10 +2,10 @@
 ### GET 요청에 header가 있다면 url/header 를 조회 한다 
 ### 이 header check는 post 생성시 중복 생성을 막으려고 check를 통해 data를 조회한다. 
 data "http" "check_header_data" {
-  count      = length(var.header) > 0 ? 1 : 0
-  url = "${var.url}/${var.header}"
+  count = length(var.header) > 0 ? 1 : 0
+  url   = "${var.url}/${var.header}"
   request_headers = {
-    "Content-Type" = var.content_type
+    "Content-Type"  = var.content_type
     "Authorization" = var.authorization
   }
 }
@@ -13,10 +13,10 @@ data "http" "check_header_data" {
 ### default로 GET 요청을통해 data 조회시 사용한다 
 ### header 가 있고 없고를 통해 분기를 나눴다 
 data "http" "check_data" {
-  count      = length(var.header) == 0 ? 1 : 0
-  url = "${var.url}"
+  count = length(var.header) == 0 ? 1 : 0
+  url   = var.url
   request_headers = {
-    "Content-Type" = var.content_type
+    "Content-Type"  = var.content_type
     "Authorization" = var.authorization
   }
 }

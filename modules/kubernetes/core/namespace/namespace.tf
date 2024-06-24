@@ -1,5 +1,5 @@
 resource "kubernetes_namespace_v1" "Singular_namespace" {
-  count      = length(var.name) > 0 ? 1 : 0
+  count = length(var.name) > 0 ? 1 : 0
   metadata {
     name = var.name
   }

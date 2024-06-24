@@ -15,6 +15,6 @@ variable "name" {
   type = string
 }
 variable "allocation_method" {
-  description = "The list of actions for the scope map."  
-  type = string
+  description = "The list of actions for the scope map."
+  type        = string
 }

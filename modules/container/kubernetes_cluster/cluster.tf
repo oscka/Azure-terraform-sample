@@ -1,9 +1,9 @@
 resource "azurerm_kubernetes_cluster" "cluster" {
   # automatic_channel_upgrade = "patch"
-  dns_prefix                = var.dns_prefix
-  location                  = var.location
-  name                      = var.name
-  resource_group_name       = var.resource_group_name
+  dns_prefix          = var.dns_prefix
+  location            = var.location
+  name                = var.name
+  resource_group_name = var.resource_group_name
   default_node_pool {
     enable_auto_scaling = true
     max_count           = var.max_count
@@ -38,5 +38,5 @@ resource "azurerm_kubernetes_cluster" "cluster" {
   # depends_on = [
   #   azurerm_resource_group.res-0,
   # ]
-  
+
 }
